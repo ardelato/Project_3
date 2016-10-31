@@ -11,8 +11,10 @@
  */
 
 //Constructor
-	//a function takes in a location, a maze, and a "name" and will intialize these parameters
-	//with the variables from the parent class(Explorer)
+	//a function that takes in a maze and initialzes the object in a random location within the maze
+	//a function that takes in a maze and a seed and will initliaze the object in a seeded location within the maze
+	//a function that takes in a maze and a prechosen location and will initialize the object within the maze at thge
+	//prechosen location
 
 //Method
-	//A function to draw the "explorer" on the screen 
+	//A function to draw the object within the maze only if the object is within the explorer object.
