@@ -7,27 +7,24 @@
  */
 
 
-public class Treasure extends RandomOccupant{
-}
- 
-/*
-private boolean variable named foundTreasure for if treasure has been found or not
+public class Treasure extends RandomOccupant
+{
+	private boolean foundTreasure;
 
-constructor: we can use super technique on maze to get access from parent class
-public Treasure - Maze maze
+	/*public Treasure(Maze maze)
 				  create new Square object and initialize to location
 				  invoke square object's setTreausre Method to 'this'
 
-public Treasure - Maze maze, long seed
+	public Treasure - Maze maze, long seed
 				  create new Square object and initialize to location
 				  invoke square object's setTreausre Method to 'this'
 
-public Treasure - Maze maze, Square location
+	public Treasure - Maze maze, Square location
 				  create new Square object and initialize to location
 				  invoke square object's setTreausre Method to 'this'
-				  
-public boolean found
-	return the treasure that has been found
+*/				  
+	public boolean found()
+	{return 
 
 public void setFound
 	set the this found treasure to object's found treasure
