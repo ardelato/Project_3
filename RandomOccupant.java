@@ -11,6 +11,7 @@
  *@version 10/28/16
  */
 
+public class RandomOccupant extends Occupant{}
 //instance variables
 	//a variable to use the random function
 	//a reference to the Maze file that it inhabits

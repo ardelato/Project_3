@@ -19,7 +19,8 @@ public abstract class Occupant
 
 //constructors
 	//make an empty constructor called Occupant
-	public Occupant();
+	public Occupant()
+	{ square_location = square_location;}
 	//make a constructor called Occupant what will accept a parameter of Square type.
 		/*this constructor will make our instance variable above equal to the value
 		 of the value passed parameter variable

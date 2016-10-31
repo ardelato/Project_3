@@ -7,10 +7,10 @@
  */
 
 
+public class Treasure extends RandomOccupant{
+}
+ 
 /*
- public class Treasure extends RandomOccupant
- 
- 
 private boolean variable named foundTreasure for if treasure has been found or not
 
 constructor: we can use super technique on maze to get access from parent class
