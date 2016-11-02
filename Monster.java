@@ -14,3 +14,10 @@ public Monster - Maze maze
 public Monster - Maze maze, long seed
 public Monster - Maze maze, Square location
  */
+
+public class Monster extends RandomOccupant{
+	
+	public Monster(Maze maze){
+		super(maze);
+	}
+}
