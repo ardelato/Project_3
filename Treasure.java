@@ -54,7 +54,7 @@ public class Treasure extends RandomOccupant
 	
 	public void move()
 	{ 
-		Square s = this.location
+		Square s = this.location;
 		s = s;
 	}
-	
+}

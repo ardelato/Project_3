@@ -10,6 +10,7 @@
  *@version Fall 2016
  *@version 10/28/16
  */
+import java.util.Random;
 
 public abstract class RandomOccupant extends Occupant{
 //instance variables
@@ -110,4 +111,4 @@ public abstract class RandomOccupant extends Occupant{
 			}
 		}
 	}
-
+}
