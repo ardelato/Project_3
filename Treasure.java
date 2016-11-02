@@ -11,26 +11,50 @@ public class Treasure extends RandomOccupant
 {
 	private boolean foundTreasure;
 
-	/*public Treasure(Maze maze)
-				  create new Square object and initialize to location
-				  invoke square object's setTreausre Method to 'this'
-
-	public Treasure - Maze maze, long seed
-				  create new Square object and initialize to location
-				  invoke square object's setTreausre Method to 'this'
-
-	public Treasure - Maze maze, Square location
-				  create new Square object and initialize to location
-				  invoke square object's setTreausre Method to 'this'
-*/				  
+	public Treasure(Maze maze)
+	{
+		Random rand = new Random();
+		m = maze; 
+		int rows = maze.rows();
+		int cols = maze.cols();
+	 	int r = rand.nextInt(rows);
+	 	int c = rand.nextInt(cols);
+	 	Square s = maze.getSquare(r, c);
+	 	this.moveTo(s);
+	 	foundTreasure = false;
+	 	this.setFound();
+	 }
+	public Treasure(Maze maze, long seed)
+	{
+		Random rand = new Random();
+		m = maze; 
+		rand.setSeed(seed);
+		int rows = m.rows();
+		int cols = m.cols();
+		int r = rand.nextInt(rows);
+		int c = rand.nextInt(cols);
+		Square s = maze.getSquare(r, c);
+	 	this.moveTo(s);
+ 		foundTreasure = false;
+ 		this.setFound();
+	}
+	public Treasure(Maze maze, Square location)
+	{
+		m = maze;
+		this.moveTo(location);
+		foundTreasure = false;
+		this.setFound();
+	}
+							  
 	public boolean found()
-	{return 
+	{ return foundTreasure;}
 
-public void setFound
-	set the this found treasure to object's found treasure
+	public void setFound()
+	{ foundTreasure = true;}
 	
-public void move
-	*Note, a treasure cannot move itself, so it does not need a method to do so, but is still be able to moved with the moveTo method in parent class
+	public void move()
+	{ 
+		Square s = this.location
+		s = s;
+	}
 	
-
- */
