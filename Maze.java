@@ -134,7 +134,7 @@ public class Maze
       Square u = this.getSquare((row - 50), col);
       Square r = this.getSquare(row, (col + 50));
       Square d = this.getSquare((row + 50), col);
-      Square l = this.getSquare(row, (col - 50))l;
+      Square l = this.getSquare(row, (col - 50));
 
       if(u.walls[2] == false)
         u.setInView(true);
