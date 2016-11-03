@@ -83,11 +83,11 @@ public class Square
 	public void setTreasure(Treasure t)
 	{ treasure = t;}
 	
-	/*public void enter()
+	public void enter()
 	{
 		if (treasure != null)
 			{treasure.setFound();}
-	}*/
+	}
 }
 		
 

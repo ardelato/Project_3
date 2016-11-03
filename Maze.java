@@ -43,7 +43,7 @@ public class Maze
    //          Your getRandomOccupant should return the occupant from the ArrayList at the specified index.
   public RandomOccupant getRandomOccupant(int index) 
   {
-    return randOccupants.get(i);
+    return randOccupants.get(index);
   }
 
    public int getNumRandOccupants() 
@@ -82,7 +82,7 @@ public class Maze
    public int gameStatus()
    {
       int status = ACTIVE;
-      if(foundAllTreasures == true)
+      if(this.foundAllTreasures() == true)
       {
         return EXPLORER_WIN;
       } 
@@ -111,7 +111,8 @@ public class Maze
       {
         if(randOccupants.get(i) instanceof Treasure)
         {
-          if(randOccupants.get(i) != true)
+          Treasure t = (Treasure)(randOccupants.get(i));  
+          if(t.found() != true)
             {return false;}
         }
       }
@@ -136,26 +137,26 @@ public class Maze
       Square d = this.getSquare((row + 50), col);
       Square l = this.getSquare(row, (col - 50));
 
-      if(u.walls[2] == false)
+      if(u.wall(2) == false)
         u.setInView(true);
-      if(r.walls[3] == false)
+      if(r.wall(3) == false)
         r.setInView(true);
-      if(d.walls[0] == false)
+      if(d.wall(0) == false)
         d.setInView(true);
-      if(l.walls[1] == false)
+      if(l.wall(1) == false)
         l.setInView(true);
       //        - Check the diagonal squares.  If there isn't a wall in the way, set their inview to true.
       Square uld = this.getSquare((row - 50), (col - 50));
       Square urd = this.getSquare((row - 50), (col + 50));
       Square dld = this.getSquare((row + 50), (col - 50));
       Square drd = this.getSquare((row + 50), (col + 50));
-      if(uld.walls[1] == false || uld.walls[2] == false)
+      if(uld.wall(1) == false || uld.wall(2) == false)
         uld.setInView(true);
-      if(urd.walls[3] == false || urd.walls[2] == false)
+      if(urd.wall(3) == false || urd.wall(2) == false)
         urd.setInView(true);
-      if(dld.walls[1] == false || dld.walls[0] == false)
+      if(dld.wall(1) == false || dld.wall(0) == false)
         dld.setInView(true);
-      if(drd.walls[3] == false || drd.walls[0] == false)
+      if(drd.wall(3) == false || drd.wall(0) == false)
         drd.setInView(true);
    }
     

@@ -30,7 +30,7 @@ public abstract class RandomOccupant extends Occupant{
 		int cols = maze.cols();
 	 	int r = rand.nextInt(rows);
 	 	int c = rand.nextInt(cols);
-	 	Square s = maze.getSquare(r, c);
+	 	Square s = m.getSquare(r, c);
 	 	this.moveTo(s);
 	}
 	//a constructor that takes in a maze object and a seed that will effect the random function
@@ -43,7 +43,7 @@ public abstract class RandomOccupant extends Occupant{
 		int cols = m.cols();
 		int r = rand.nextInt(rows);
 		int c = rand.nextInt(cols);
-		Square s = maze.getSquare(r, c);
+		Square s = m.getSquare(r, c);
 	 	this.moveTo(s);
 	}
 	//a constructor that takes in a maze object and a pre-chosen location
@@ -74,39 +74,43 @@ public abstract class RandomOccupant extends Occupant{
 		{
 			int d = rand.nextInt(4);
 			if(d == Square.UP)
+			{
+				if(s.wall(d) == false)
 				{
-					if(walls[d] == false)
-					{
-						x = 1;
-						r -= 50;
-						this.moveTo(r,c);
-					}
+					x = 1;
+					r -= 50;
+					s = m.getSquare(r,c);
+					this.moveTo(s);
 				}
+			}
 			else if(d == Square.DOWN)
+			{
+				if(s.wall(d) == false)
 				{
-					if(walls[d] == false)
-					{
-						x = 1;
-						r += 50;
-						this.moveTo(r,c);
-					}
+					x = 1;
+					r += 50;
+					s = m.getSquare(r,c);
+					this.moveTo(s);
 				}
+			}
 			else if(d == Square.RIGHT)
 			{
-				if(walls[d] == false)
+				if(s.wall(d) == false)
 				{
 					x = 1;
 					c += 50;
-					this.moveTo(r,c);
+					s = m.getSquare(r,c);
+					this.moveTo(s);
 				}
 			}
 			else if(d == Square.LEFT)
 			{
-				if(walls[d] == false)
+				if(s.wall(d) == false)
 				{
 					x = 1;
 					c-= 50;
-					this.moveTo(r,c);
+					s = m.getSquare(r,c);
+					this.moveTo(s);
 				}
 			}
 		}
