@@ -1,10 +1,13 @@
 import java.util.*;
+
 /**
  * Class that contains all the logic to model a Maze with Treasures, Monsters, and an Explorer.
  * 
  * @author Anthony Vuong and Angel de la Torre 
  * @version 11/2/16
  */
+
+
 public class Maze
 {
    // named constants
@@ -26,7 +29,7 @@ public class Maze
    {
       // CHANGE - initialize the squares, rows, and cols instance variables to
       //          what is passed in to the constructor
-		  this.squares = squares;
+	  this.squares = squares;
       this.rows = rows;
       this.cols = cols;
       // CHANGE - create the empty ArrayList of RandomOccupants
@@ -132,34 +135,75 @@ public class Maze
       s.setInView(true);
         
       // CHANGE - Check the adjacent squares.  If there isn't a wall in the way, set their inview to true.
-      Square u = this.getSquare((row - 50), col);
-      Square r = this.getSquare(row, (col + 50));
-      Square d = this.getSquare((row + 50), col);
-      Square l = this.getSquare(row, (col - 50));
+      //Square u = this.getSquare((row - 1), col);
+      //Square r = this.getSquare(row, (col + 1));
+      //Square d = this.getSquare((row + 1), col);
+      //Square l = this.getSquare(row, (col - 1));
+      
+      //check if there is a wall in UP direction
+      if( s.wall(Square.UP) == false){
+          (getSquare(row-1,col)).setInView(true);
+          
+           if( getSquare(row-1,col).wall(Square.LEFT) == false){
+       
+                 (getSquare(row-1,col-1)).setInView(true);
+           }
+       
+           if( getSquare(row-1,col).wall(Square.RIGHT) == false){
+           
+                 (getSquare(row-1,col+1)).setInView(true);
+           }
+       
+ }
+ 
+ if( s.wall(Square.RIGHT) == false){
+       (getSquare(row,col+1)).setInView(true);
+       
+       if( getSquare(row,col+1).wall(Square.UP) == false){
+       
+           (getSquare(row-1,col+1)).setInView(true);
+       }
+       
+       if( getSquare(row,col+1).wall(Square.DOWN) == false){
+       
+           (getSquare(row+1,col+1)).setInView(true);
+       }
+ }
+ 
+ if( s.wall(Square.DOWN) == false){
+       (getSquare(row+1,col)).setInView(true);
+       
+       if( getSquare(row+1,col).wall(Square.LEFT) == false){
+       
+           (getSquare(row+1,col-1)).setInView(true);
+       }
+       
+       if( getSquare(row+1,col).wall(Square.RIGHT) == false){
+       
+           (getSquare(row+1,col+1)).setInView(true);
+       }
+ }
+ 
+ if( s.wall(Square.LEFT) == false){
+ 
+       (getSquare(row,col-1)).setInView(true);
+ 
+       if( getSquare(row,col-1).wall(Square.UP) == false){
+       
+           (getSquare(row-1,col-1)).setInView(true);
+       }
+       
+       if( getSquare(row,col-1).wall(Square.DOWN) == false){
+       
+           (getSquare(row+1,col-1)).setInView(true);
+       }
+ 
+ 
+ }
 
-      if(u.wall(2) == false)
-        u.setInView(true);
-      if(r.wall(3) == false)
-        r.setInView(true);
-      if(d.wall(0) == false)
-        d.setInView(true);
-      if(l.wall(1) == false)
-        l.setInView(true);
-      //        - Check the diagonal squares.  If there isn't a wall in the way, set their inview to true.
-      Square uld = this.getSquare((row - 50), (col - 50));
-      Square urd = this.getSquare((row - 50), (col + 50));
-      Square dld = this.getSquare((row + 50), (col - 50));
-      Square drd = this.getSquare((row + 50), (col + 50));
-      if(uld.wall(1) == false || uld.wall(2) == false)
-        uld.setInView(true);
-      if(urd.wall(3) == false || urd.wall(2) == false)
-        urd.setInView(true);
-      if(dld.wall(1) == false || dld.wall(0) == false)
-        dld.setInView(true);
-      if(drd.wall(3) == false || drd.wall(0) == false)
-        drd.setInView(true);
-   }
-    
+}
+
+
    private void resetInView()
    {
       for (int i = 0; i<rows; i++) {

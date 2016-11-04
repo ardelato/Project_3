@@ -75,11 +75,14 @@ public class Square
 	public int y()
 	{return ROW*SQUARE_SIZE;}
 
-	public void setInView(boolean inView)
+	public void setInView(boolean in_View)
 	{
-		if(inView == true)
+		if(inView == true){
 			seen = true;
 	}	
+	inView = in_View;
+	}
+	
 	public void setTreasure(Treasure t)
 	{ treasure = t;}
 	

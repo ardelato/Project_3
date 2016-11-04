@@ -10,6 +10,8 @@
  *@version 10/28/16
  */
 
+import java.awt.event.KeyEvent;
+
 public class Explorer extends Occupant{
 //instance variables
 	//a variable to represent the Explorer's name
@@ -41,10 +43,12 @@ public class Explorer extends Occupant{
 	//the keys pressed must be arrow keys either numpad or non-numpad
 	
 	public void move(int key){
+		//local variables needed to keep track of current row/column
 		int current_row = this.location().row();
 		int current_col = this.location().col();
-		if(key == 0 || key == 1 || key == 2 || key == 3){
-			if (key == 0){
+			
+			//key press that checks if key entered was in UP direction
+			if (KeyEvent.VK_UP == key || KeyEvent.VK_KP_UP == key){
 				current_row -= 50;
 				if(maze.getSquare(current_row, current_col).wall(0) == false){
 					this.moveTo(maze.getSquare(current_row, current_col));
@@ -53,7 +57,9 @@ public class Explorer extends Occupant{
 					this.location();
 				}
 			}
-			if (key == 2){
+			
+			//key press that checks if key entered was in DOWN direction
+			if (KeyEvent.VK_DOWN == key || KeyEvent.VK_KP_DOWN == key){
 				current_row += 50;
 				if(maze.getSquare(current_row, current_col).wall(2) == false){
 					this.moveTo(maze.getSquare(current_row, current_col));
@@ -63,7 +69,9 @@ public class Explorer extends Occupant{
 				}
 			
 			}
-			if (key == 3){
+			
+			//key press that checks if key entered was in LEFT direction
+			if (KeyEvent.VK_LEFT == key || KeyEvent.VK_KP_LEFT == key){
 				current_col -= 50;
 				if(maze.getSquare(current_row, current_col).wall(3) == false){
 					this.moveTo(maze.getSquare(current_row, current_col));
@@ -72,7 +80,9 @@ public class Explorer extends Occupant{
 					this.location();
 				}
 			}
-			if (key == 1){
+			
+			//key press that checks if key entered was in RIGHT direction
+			if (KeyEvent.VK_RIGHT == key || KeyEvent.VK_KP_RIGHT == key){
 				current_row += 50;
 				if(maze.getSquare(current_row, current_col).wall(1) == false){
 					this.moveTo(maze.getSquare(current_row, current_col));
@@ -82,11 +92,9 @@ public class Explorer extends Occupant{
 				}
 			}
 		}
-		else{
-			System.out.println("Not a valid key Press");
-		}
 		
-	}
+		
+	
 	/**
 	*	Retrieve the row and column of the current location
 	*   Do so by retrieving them from the Square class

@@ -13,37 +13,24 @@ public class Treasure extends RandomOccupant
 
 	public Treasure(Maze maze)
 	{
-		Random rand = new Random();
-		m = maze; 
-		int rows = maze.rows();
-		int cols = maze.cols();
-	 	int r = rand.nextInt(rows);
-	 	int c = rand.nextInt(cols);
-	 	Square s = maze.getSquare(r, c);
-	 	this.moveTo(s);
+		super(maze);
 	 	foundTreasure = false;
-	 	this.setFound();
+	 	Square s = this.location();
+	 	s.setTreasure(this);
 	 }
 	public Treasure(Maze maze, long seed)
 	{
-		Random rand = new Random();
-		m = maze; 
-		rand.setSeed(seed);
-		int rows = m.rows();
-		int cols = m.cols();
-		int r = rand.nextInt(rows);
-		int c = rand.nextInt(cols);
-		Square s = maze.getSquare(r, c);
-	 	this.moveTo(s);
- 		foundTreasure = false;
- 		this.setFound();
+		super(maze);
+	 	foundTreasure = false;
+	 	Square s = this.location();
+	 	s.setTreasure(this);
 	}
 	public Treasure(Maze maze, Square location)
 	{
-		m = maze;
-		this.moveTo(location);
-		foundTreasure = false;
-		this.setFound();
+		super(maze);
+	 	foundTreasure = false;
+	 	Square s = this.location();
+	 	s.setTreasure(this);
 	}
 							  
 	public boolean found()
@@ -52,9 +39,5 @@ public class Treasure extends RandomOccupant
 	public void setFound()
 	{ foundTreasure = true;}
 	
-	public void move()
-	{ 
-		Square s = this.location;
-		s = s;
-	}
+	public void move(){}
 }
