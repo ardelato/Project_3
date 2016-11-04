@@ -51,14 +51,8 @@ public class Explorer extends Occupant{
 			
 			//key press that checks if key entered was in UP direction
 			if (KeyEvent.VK_UP == key || KeyEvent.VK_KP_UP == key){
-=======
-		int current_row = super.location().row();
-		int current_col = super.location().col();
-		if(key == 0 || key == 1 || key == 2 || key == 3){
-			if (key == 0){
->>>>>>> origin/master
-				current_row -= 50;
-				if(maze.getSquare(current_row, current_col).wall(0) == false){
+				current_row -= 1;
+				if(maze.getSquare(current_row, current_col).wall(Sq.UP) == false){
 					this.moveTo(maze.getSquare(current_row, current_col));
 				}
 				else{
@@ -68,8 +62,8 @@ public class Explorer extends Occupant{
 			
 			//key press that checks if key entered was in DOWN direction
 			if (KeyEvent.VK_DOWN == key || KeyEvent.VK_KP_DOWN == key){
-				current_row += 50;
-				if(maze.getSquare(current_row, current_col).wall(2) == false){
+				current_row += 1;
+				if(maze.getSquare(current_row, current_col).wall(Sq.DOWN) == false){
 					this.moveTo(maze.getSquare(current_row, current_col));
 				}
 				else{
@@ -80,8 +74,8 @@ public class Explorer extends Occupant{
 			
 			//key press that checks if key entered was in LEFT direction
 			if (KeyEvent.VK_LEFT == key || KeyEvent.VK_KP_LEFT == key){
-				current_col -= 50;
-				if(maze.getSquare(current_row, current_col).wall(3) == false){
+				current_col -= 1;
+				if(maze.getSquare(current_row, current_col).wall(Sq.LEFT) == false){
 					this.moveTo(maze.getSquare(current_row, current_col));
 				}
 				else{
@@ -91,8 +85,8 @@ public class Explorer extends Occupant{
 			
 			//key press that checks if key entered was in RIGHT direction
 			if (KeyEvent.VK_RIGHT == key || KeyEvent.VK_KP_RIGHT == key){
-				current_row += 50;
-				if(maze.getSquare(current_row, current_col).wall(1) == false){
+				current_row += 1;
+				if(maze.getSquare(current_row, current_col).wall(Sq.RIGHT) == false){
 					this.moveTo(maze.getSquare(current_row, current_col));
 				}
 				else{
