@@ -44,7 +44,6 @@ public class Explorer extends Occupant{
 	//the keys pressed must be arrow keys either numpad or non-numpad
 	
 	public void move(int key){
-<<<<<<< HEAD
 		//local variables needed to keep track of current row/column
 		int current_row = this.location().row();
 		int current_col = this.location().col();
