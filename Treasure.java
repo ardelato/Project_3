@@ -5,7 +5,7 @@
  * @version CPE102-05
  * @version Fall 2016
  */
-import java.util.Random;
+
 
 public class Treasure extends RandomOccupant
 {
@@ -37,7 +37,5 @@ public class Treasure extends RandomOccupant
 	
 	public void move()
 	{ 
-		Square s = this.location();
-		s = s;
 	}
 }

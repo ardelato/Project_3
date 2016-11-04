@@ -28,8 +28,8 @@ public abstract class RandomOccupant extends Occupant{
 		m = maze; 
 		int rows = maze.rows();
 		int cols = maze.cols();
-	 	int r = rand.nextInt(rows);
-	 	int c = rand.nextInt(cols);
+	 	int r = rand.nextInt(maze.rows());
+	 	int c = rand.nextInt(maze.cols());
 	 	Square s = m.getSquare(r, c);
 	 	this.moveTo(s);
 	}
@@ -78,7 +78,7 @@ public abstract class RandomOccupant extends Occupant{
 				if(s.wall(d) == false)
 				{
 					x = 1;
-					r -= 50;
+					r -= 1;
 					s = m.getSquare(r,c);
 					this.moveTo(s);
 				}
@@ -88,7 +88,7 @@ public abstract class RandomOccupant extends Occupant{
 				if(s.wall(d) == false)
 				{
 					x = 1;
-					r += 50;
+					r += 1;
 					s = m.getSquare(r,c);
 					this.moveTo(s);
 				}
@@ -98,7 +98,7 @@ public abstract class RandomOccupant extends Occupant{
 				if(s.wall(d) == false)
 				{
 					x = 1;
-					c += 50;
+					c += 1;
 					s = m.getSquare(r,c);
 					this.moveTo(s);
 				}
@@ -108,7 +108,7 @@ public abstract class RandomOccupant extends Occupant{
 				if(s.wall(d) == false)
 				{
 					x = 1;
-					c-= 50;
+					c-= 1;
 					s = m.getSquare(r,c);
 					this.moveTo(s);
 				}

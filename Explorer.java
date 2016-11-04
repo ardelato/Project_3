@@ -9,6 +9,7 @@
  *@version Fall 2016
  *@version 10/28/16
  */
+import java.awt.event.KeyEvent;
 
 public class Explorer extends Occupant{
 //instance variables
@@ -25,7 +26,7 @@ public class Explorer extends Occupant{
 	/*to do so we will need set the values that it takes in, to the variables we have created but are empty */
 	
 	public Explorer(Square location, Maze maze, String name){
-		this.moveTo(location);
+		super.moveTo(location);
 		this.maze = maze;
 		this.name = name;
 		maze.lookAround(location);
@@ -41,8 +42,8 @@ public class Explorer extends Occupant{
 	//the keys pressed must be arrow keys either numpad or non-numpad
 	
 	public void move(int key){
-		int current_row = this.location().row();
-		int current_col = this.location().col();
+		int current_row = super.location().row();
+		int current_col = super.location().col();
 		if(key == 0 || key == 1 || key == 2 || key == 3){
 			if (key == 0){
 				current_row -= 50;
