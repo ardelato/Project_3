@@ -134,6 +134,7 @@ public class Maze
       // Set the current square so that we are viewing it (obviously)
       s.setInView(true);
         
+<<<<<<< HEAD
       // CHANGE - Check the adjacent squares.  If there isn't a wall in the way, set their inview to true.
       //Square u = this.getSquare((row - 1), col);
       //Square r = this.getSquare(row, (col + 1));
@@ -204,6 +205,70 @@ public class Maze
 }
 
 
+=======
+      // CHANGE - Check the adjacent squares.  If there isn't a wall in the way, set their inview to true
+      //        - Check the diagonal squares.  If there isn't a wall in the way, set their inview to true
+     if( s.wall(s.UP) == false){
+             (getSquare(row-1,col)).setInView(true);
+             
+              if( getSquare(row-1,col).wall(s.LEFT) == false){
+          
+                    (getSquare(row-1,col-1)).setInView(true);
+              }
+          
+              if( getSquare(row-1,col).wall(s.RIGHT) == false){
+              
+                    (getSquare(row-1,col+1)).setInView(true);
+              }
+            
+      }
+      
+      if( s.wall(s.RIGHT) == false){
+            (getSquare(row,col+1)).setInView(true);
+            
+            if( getSquare(row,col+1).wall(s.UP) == false){
+            
+                (getSquare(row-1,col+1)).setInView(true);
+            }
+            
+            if( getSquare(row,col+1).wall(s.DOWN) == false){
+            
+                (getSquare(row+1,col+1)).setInView(true);
+            }
+      }
+      
+      if( s.wall(s.DOWN) == false){
+            (getSquare(row+1,col)).setInView(true);
+            
+            if( getSquare(row+1,col).wall(s.LEFT) == false){
+            
+                (getSquare(row+1,col-1)).setInView(true);
+            }
+            
+            if( getSquare(row+1,col).wall(s.RIGHT) == false){
+            
+                (getSquare(row+1,col+1)).setInView(true);
+            }
+      }
+      
+      if( s.wall(s.LEFT) == false){
+      
+            (getSquare(row,col-1)).setInView(true);
+      
+            if( getSquare(row,col-1).wall(s.UP) == false){
+            
+                (getSquare(row-1,col-1)).setInView(true);
+            }
+            
+            if( getSquare(row,col-1).wall(s.DOWN) == false){
+            
+                (getSquare(row+1,col-1)).setInView(true);
+            }
+      
+      
+      }    
+    }
+>>>>>>> origin/master
    private void resetInView()
    {
       for (int i = 0; i<rows; i++) {

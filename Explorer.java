@@ -9,6 +9,7 @@
  *@version Fall 2016
  *@version 10/28/16
  */
+import java.awt.event.KeyEvent;
 
 import java.awt.event.KeyEvent;
 
@@ -27,7 +28,7 @@ public class Explorer extends Occupant{
 	/*to do so we will need set the values that it takes in, to the variables we have created but are empty */
 	
 	public Explorer(Square location, Maze maze, String name){
-		this.moveTo(location);
+		super.moveTo(location);
 		this.maze = maze;
 		this.name = name;
 		maze.lookAround(location);
@@ -43,12 +44,19 @@ public class Explorer extends Occupant{
 	//the keys pressed must be arrow keys either numpad or non-numpad
 	
 	public void move(int key){
+<<<<<<< HEAD
 		//local variables needed to keep track of current row/column
 		int current_row = this.location().row();
 		int current_col = this.location().col();
 			
 			//key press that checks if key entered was in UP direction
 			if (KeyEvent.VK_UP == key || KeyEvent.VK_KP_UP == key){
+=======
+		int current_row = super.location().row();
+		int current_col = super.location().col();
+		if(key == 0 || key == 1 || key == 2 || key == 3){
+			if (key == 0){
+>>>>>>> origin/master
 				current_row -= 50;
 				if(maze.getSquare(current_row, current_col).wall(0) == false){
 					this.moveTo(maze.getSquare(current_row, current_col));

@@ -34,10 +34,10 @@ public class Square
 	private boolean inView = false;
 
 //a private integer variable named ROW that represent the rows of a square
-	private int ROW;
+	private int row;
 
 //a private integer variable named COL that represent the columns of a square
-	private int COL;
+	private int col;
 
 //a private Treasure(type) variable named treasure that references a treasure objects within a square
 	private Treasure treasure = null; 
@@ -48,8 +48,8 @@ public class Square
 		walls[1] = right;
 		walls[2] = down;
  		walls[3] = left;
-		ROW = row;
-		COL = col;
+		this.row = row;
+		this.col = col;
 	}
 	public boolean wall(int direction)
 	{return walls[direction];}
@@ -61,24 +61,25 @@ public class Square
 	{return inView;}
 	
 	public int row()
-	{return ROW;}
+	{return row;}
 	
 	public int col()
-	{return COL;}
+	{return col;}
 	
 	public Treasure treasure()
 	{return treasure;}
 	
 	public int x()
-	{return COL*SQUARE_SIZE;}
+	{return col*SQUARE_SIZE;}
 	
 	public int y()
-	{return ROW*SQUARE_SIZE;}
+	{return row*SQUARE_SIZE;}
 
 	public void setInView(boolean in_View)
 	{
 		if(inView == true){
 			seen = true;
+		this.inView = inView;
 	}	
 	inView = in_View;
 	}
