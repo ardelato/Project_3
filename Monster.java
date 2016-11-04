@@ -21,15 +21,6 @@ public class Monster extends RandomOccupant{
 		super(maze);
 		
 	}
-	
-	public Monster(Maze maze, long seed){
-		super(maze, seed);
-	}
-	
-	public Monster(Maze maze, Square Location){
-		super(maze, Location);
-	}
-
 	public Monster(Maze maze, long seed)
 	{
 		super(maze, seed);
