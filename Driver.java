@@ -31,7 +31,7 @@
       ex = new Explorer(mazeSquares[0][0], maze, "Super Chris");
       
       //assertEquals(mazeSquares[0][0], ex.location());
-      System.out.println(ex.location());
+      System.out.println(mazeSquares[0][0]);
       /*
       assertEquals("Super Chris", ex.name());
       assertTrue(mazeSquares[0][0].inView());

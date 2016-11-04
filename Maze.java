@@ -132,9 +132,10 @@ public class Maze
       s.setInView(true);
         
       // CHANGE - Check the adjacent squares.  If there isn't a wall in the way, set their inview to true.
+      Square d = this.getSquare((row + 50), col);
       Square u = this.getSquare((row - 50), col);
       Square r = this.getSquare(row, (col + 50));
-      Square d = this.getSquare((row + 50), col);
+      
       Square l = this.getSquare(row, (col - 50));
 
       if(u.wall(2) == false)
