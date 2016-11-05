@@ -11,7 +11,6 @@
  */
 import java.awt.event.KeyEvent;
 
-import java.awt.event.KeyEvent;
 
 public class Explorer extends Occupant{
 //instance variables
@@ -45,51 +44,62 @@ public class Explorer extends Occupant{
 	
 	public void move(int key){
 		//local variables needed to keep track of current row/column
-		int current_row = this.location().row();
-		int current_col = this.location().col();
+		int current_row = super.location().row();
+		int current_col = super.location().col();
 			
 			//key press that checks if key entered was in UP direction
-			if (KeyEvent.VK_UP == key || KeyEvent.VK_KP_UP == key){
-				current_row -= 1;
-				if(maze.getSquare(current_row, current_col).wall(Sq.UP) == false){
-					this.moveTo(maze.getSquare(current_row, current_col));
-				}
-				else{
-					this.location();
+			if (key == Square.UP){
+				if(current_row != 0)
+				{
+					current_row -= 1;
+					if(maze.getSquare(current_row, current_col).wall(Square.DOWN) == false){
+						super.moveTo(maze.getSquare(current_row, current_col));
+					}
+					else{
+						this.location();
+					}
 				}
 			}
 			
 			//key press that checks if key entered was in DOWN direction
-			if (KeyEvent.VK_DOWN == key || KeyEvent.VK_KP_DOWN == key){
-				current_row += 1;
-				if(maze.getSquare(current_row, current_col).wall(Sq.DOWN) == false){
-					this.moveTo(maze.getSquare(current_row, current_col));
-				}
-				else{
+			if (key == Square.DOWN){
+				if(current_row != (maze.rows() - 1) )
+				{
+					current_row += 1;
+					if(maze.getSquare(current_row, current_col).wall(Square.UP) == false){
+					super.moveTo(maze.getSquare(current_row, current_col));
+					}
+					else{
 					this.location();
+					}				
 				}
-			
 			}
+				
 			
 			//key press that checks if key entered was in LEFT direction
-			if (KeyEvent.VK_LEFT == key || KeyEvent.VK_KP_LEFT == key){
-				current_col -= 1;
-				if(maze.getSquare(current_row, current_col).wall(Sq.LEFT) == false){
-					this.moveTo(maze.getSquare(current_row, current_col));
-				}
-				else{
-					this.location();
-				}
+			if (key == Square.LEFT){
+				if(current_col != 0)
+				{
+					current_col -= 1;
+					if(maze.getSquare(current_row, current_col).wall(Square.RIGHT) == false){
+						super.moveTo(maze.getSquare(current_row, current_col));
+					}
+					else{
+						this.location();
+					}
+				}	
 			}
 			
 			//key press that checks if key entered was in RIGHT direction
-			if (KeyEvent.VK_RIGHT == key || KeyEvent.VK_KP_RIGHT == key){
-				current_row += 1;
-				if(maze.getSquare(current_row, current_col).wall(Sq.RIGHT) == false){
-					this.moveTo(maze.getSquare(current_row, current_col));
-				}
-				else{
-					this.location();
+			if (key == Square.RIGHT){
+				if(current_col != (maze.cols() - 1))
+				{	current_col += 1;
+					if(maze.getSquare(current_row, current_col).wall(Square.LEFT) == false){
+						super.moveTo(maze.getSquare(current_row, current_col));
+					}
+					else{
+						this.location();
+					}
 				}
 			}
 		}

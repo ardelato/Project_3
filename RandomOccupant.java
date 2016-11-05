@@ -69,50 +69,42 @@ public abstract class RandomOccupant extends Occupant{
 		Square s = this.location();
 		int r = s.row();
 		int c = s.col();
-		int x = 0;
-		while(x == 0)
+		boolean x = false;
+		while(x == false)
 		{
 			int d = rand.nextInt(4);
-			if(d == Square.UP)
+			if(d == Square.UP && r != 0 && s.wall(d) == false)
 			{
-				if(s.wall(d) == false)
-				{
-					x = 1;
-					r -= 1;
-					s = m.getSquare(r,c);
-					this.moveTo(s);
+				r -= 1;
+				if(m.getSquare(r, c).wall(Square.DOWN) == false){
+					this.moveTo(m.getSquare(r, c));
+					x = true;
 				}
 			}
-			else if(d == Square.DOWN)
+			else if(d == Square.DOWN && r != (m.rows() - 1) && s.wall(d) == false)
 			{
-				if(s.wall(d) == false)
-				{
-					x = 1;
-					r += 1;
-					s = m.getSquare(r,c);
-					this.moveTo(s);
+				r += 1;
+				if(m.getSquare(r,c).wall(Square.UP) == false){
+					this.moveTo(m.getSquare(r,c));
+					x = true;
 				}
 			}
-			else if(d == Square.RIGHT)
-			{
-				if(s.wall(d) == false)
-				{
-					x = 1;
-					c += 1;
-					s = m.getSquare(r,c);
-					this.moveTo(s);
+			else if(d == Square.RIGHT && c != (m.cols() - 1) && s.wall(d) == false)
+			{ 
+				c += 1;
+				if(m.getSquare(r,c).wall(Square.LEFT) == false){
+					this.moveTo(m.getSquare(r,c));
+					x = true;
 				}
 			}
-			else if(d == Square.LEFT)
+			else if(d == Square.LEFT && c != 0 &&  s.wall(d) == false)
 			{
-				if(s.wall(d) == false)
-				{
-					x = 1;
-					c-= 1;
-					s = m.getSquare(r,c);
-					this.moveTo(s);
+				c-= 1;
+				if(m.getSquare(r, c).wall(Square.RIGHT) == false){
+					super.moveTo(m.getSquare(r,c));
 				}
 			}
 		}
 	}
 }
+
