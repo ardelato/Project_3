@@ -15,28 +15,25 @@ public class Treasure extends RandomOccupant
 	{
 		super(maze);
 	 	foundTreasure = false;
-	 	Square s = this.location();
-	 	s.setTreasure(this);
+	 	super.location().setTreasure(this);
 	 }
 	public Treasure(Maze maze, long seed)
 	{
-		super(maze);
+		super(maze, seed);
 	 	foundTreasure = false;
-	 	Square s = this.location();
-	 	s.setTreasure(this);
+	 	super.location().setTreasure(this);
 	}
 	public Treasure(Maze maze, Square location)
 	{
-		super(maze);
+		super(maze, location);
 	 	foundTreasure = false;
-	 	Square s = this.location();
-	 	s.setTreasure(this);
+	    location().setTreasure(this);
 	 }				  
 	public boolean found()
 	{ return foundTreasure;}
 
 	public void setFound()
-	{ foundTreasure = true;}
+	{ this.foundTreasure = true;}
 	
 	public void move(){}
 }

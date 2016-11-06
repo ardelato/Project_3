@@ -29,14 +29,17 @@ public class Maze
    {
       // CHANGE - initialize the squares, rows, and cols instance variables to
       //          what is passed in to the constructor
-	  this.squares = squares;
+	   this.squares = squares;
       this.rows = rows;
       this.cols = cols;
       // CHANGE - create the empty ArrayList of RandomOccupants
+      randOccupants = new ArrayList<RandomOccupant>();
    }
 	
    // QUERIES
-   public Square getSquare(int row, int col) { return squares[row][col]; }
+   public Square getSquare(int row, int col){ 
+    return squares[row][col]; 
+   }
    public int rows() {return rows;}
    public int cols() {return cols;}
    public String explorerName() {return explorer.name();}
@@ -67,8 +70,7 @@ public class Maze
    public void randMove()
    {
       // CHANGE - instruct each object in the RandomOccupant to move
-    for(int i = 0; i < randOccupants.size(); i++)
-    {
+    for(int i = 0; i < randOccupants.size(); i++){
       randOccupants.get(i).move();
     }
    }
@@ -89,16 +91,13 @@ public class Maze
       {
         return EXPLORER_WIN;
       } 
-      else
+      for(int i = 0; i < randOccupants.size(); i++)
       {
-        for(int i = 0; i < randOccupants.size(); i++)
+        if(randOccupants.get(i) instanceof Monster)
         {
-          if(randOccupants.get(i) instanceof Monster)
-          {
-            if(randOccupants.get(i).location() == explorer.location())
-            {return MONSTER_WIN;}
-          }
-        } 
+          if( ((Monster)randOccupants.get(i)).location() == explorer.location())
+          {return MONSTER_WIN;}
+        }
       }
       // CHANGE - implement
       return status;
@@ -114,9 +113,11 @@ public class Maze
       {
         if(randOccupants.get(i) instanceof Treasure)
         {
-          Treasure t = (Treasure)(randOccupants.get(i));  
-          if(t.found() != true)
-            {return false;}
+          Treasure t = ((Treasure)randOccupants.get(i));  
+          if(t.found() != true){ 
+            foundAll = false;
+            return foundAll;
+            }
         }
       }
               
@@ -135,70 +136,46 @@ public class Maze
       s.setInView(true);
         
       // CHANGE - Check the adjacent squares.  If there isn't a wall in the way, set their inview to true.
-      //Square u = this.getSquare((row - 1), col);
-      //Square r = this.getSquare(row, (col + 1));
-      //Square d = this.getSquare((row + 1), col);
-      //Square l = this.getSquare(row, (col - 1));
-      
+        
       //check if there is a wall in UP direction
         if( s.wall(s.UP) == false){
-             (getSquare(row-1,col)).setInView(true);
-             
-              if( getSquare(row-1,col).wall(s.LEFT) == false){
-          
-                    (getSquare(row-1,col-1)).setInView(true);
-              }
-          
-              if( getSquare(row-1,col).wall(s.RIGHT) == false){
-              
-                    (getSquare(row-1,col+1)).setInView(true);
-              }
-            
-      }
+           (getSquare(row-1,col)).setInView(true);
+            if( getSquare(row-1,col).wall(s.LEFT) == false){
+                  (getSquare(row-1,col-1)).setInView(true);
+            }
+            if( getSquare(row-1,col).wall(s.RIGHT) == false){             
+                  (getSquare(row-1,col+1)).setInView(true);
+            }        
+        }
       
-      if( s.wall(s.RIGHT) == false){
+       if( s.wall(s.RIGHT) == false){
             (getSquare(row,col+1)).setInView(true);
-            
             if( getSquare(row,col+1).wall(s.UP) == false){
-            
                 (getSquare(row-1,col+1)).setInView(true);
             }
-            
             if( getSquare(row,col+1).wall(s.DOWN) == false){
-            
                 (getSquare(row+1,col+1)).setInView(true);
             }
-      }
-      
+        }
+    
       if( s.wall(s.DOWN) == false){
-            (getSquare(row+1,col)).setInView(true);
-            
+            (getSquare(row+1,col)).setInView(true);  
             if( getSquare(row+1,col).wall(s.LEFT) == false){
-            
                 (getSquare(row+1,col-1)).setInView(true);
             }
-            
             if( getSquare(row+1,col).wall(s.RIGHT) == false){
-            
                 (getSquare(row+1,col+1)).setInView(true);
             }
-      }
+       }
       
       if( s.wall(s.LEFT) == false){
-      
             (getSquare(row,col-1)).setInView(true);
-      
             if( getSquare(row,col-1).wall(s.UP) == false){
-            
                 (getSquare(row-1,col-1)).setInView(true);
             }
-            
             if( getSquare(row,col-1).wall(s.DOWN) == false){
-            
                 (getSquare(row+1,col-1)).setInView(true);
             }
-      
-      
       }    
     }
    private void resetInView()

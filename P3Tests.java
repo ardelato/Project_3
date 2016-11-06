@@ -89,6 +89,6 @@ public class P3Tests
       Monster m2 = new Monster(maze, 1454);
       Monster m3 = new Monster(maze, mazeSquares[1][0]);
 
-      System.out.println( m1 & m2 & m3);
+
    }
 }

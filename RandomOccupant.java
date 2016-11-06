@@ -16,7 +16,6 @@ public abstract class RandomOccupant extends Occupant{
 //instance variables
 	//a variable to use the random function
 	private Random rand = new Random();
-
 	//a reference to the Maze file that it inhabits
 	private Maze m; 
 
@@ -26,12 +25,9 @@ public abstract class RandomOccupant extends Occupant{
 	public RandomOccupant(Maze maze)
 	{
 		m = maze; 
-		int rows = maze.rows();
-		int cols = maze.cols();
-	 	int r = rand.nextInt(maze.rows());
-	 	int c = rand.nextInt(maze.cols());
-	 	Square s = m.getSquare(r, c);
-	 	this.moveTo(s);
+	 	int r = rand.nextInt(m.rows());
+	 	int c = rand.nextInt(m.cols());
+	 	this.moveTo(m.getSquare(r, c));
 	}
 	//a constructor that takes in a maze object and a seed that will effect the random function
 		//the seed will effect the random function in a way to make the random function predictable
@@ -39,12 +35,9 @@ public abstract class RandomOccupant extends Occupant{
 	{
 		m = maze; 
 		rand.setSeed(seed);
-		int rows = m.rows();
-		int cols = m.cols();
-		int r = rand.nextInt(rows);
-		int c = rand.nextInt(cols);
-		Square s = m.getSquare(r, c);
-	 	this.moveTo(s);
+		int r = rand.nextInt(m.rows());
+		int c = rand.nextInt(m.cols());
+	 	this.moveTo(m.getSquare(r, c));
 	}
 	//a constructor that takes in a maze object and a pre-chosen location
 		//this will remove the random function and set the object to the chosen location
@@ -70,8 +63,7 @@ public abstract class RandomOccupant extends Occupant{
 		int r = s.row();
 		int c = s.col();
 		boolean x = false;
-		while(x == false)
-		{
+		while(x == false){
 			int d = rand.nextInt(4);
 			if(d == Square.UP && r != 0 && s.wall(d) == false)
 			{
@@ -101,7 +93,8 @@ public abstract class RandomOccupant extends Occupant{
 			{
 				c-= 1;
 				if(m.getSquare(r, c).wall(Square.RIGHT) == false){
-					super.moveTo(m.getSquare(r,c));
+					this.moveTo(m.getSquare(r,c));
+					x = true;
 				}
 			}
 		}
