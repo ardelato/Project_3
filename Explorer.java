@@ -20,17 +20,17 @@ public class Explorer extends Occupant{
 	/*decalre the privacy use the appropiate data type and use a desired variable name.*/
 	
 	private String name;
-	private Maze maze;
+	private Maze m;
 
 //constructor
 	//a constructor that takes in a location, a Maze, and a "name" and will call the function lookAround
 	/*to do so we will need set the values that it takes in, to the variables we have created but are empty */
 	
 	public Explorer(Square location, Maze maze, String name){
-		super.moveTo(location);
-		this.maze = maze;
+		super(location);
+		this.m = maze;
 		this.name = name;
-		maze.lookAround(location);
+		m.lookAround(location);
 	}
 
 //Method
@@ -44,63 +44,35 @@ public class Explorer extends Occupant{
 	
 	public void move(int key){
 		//local variables needed to keep track of current row/column
-		int current_row = super.location().row();
-		int current_col = super.location().col();
+	
+		Square s = super.location();
+	
 			
 			//key press that checks if key entered was in UP direction
-			if (key == Square.UP){
-				if(current_row != 0)
-				{
-					current_row -= 1;
-					if(maze.getSquare(current_row, current_col).wall(Square.DOWN) == false){
-						super.moveTo(maze.getSquare(current_row, current_col));
-					}
-					else{
-						this.location();
-					}
-				}
-			}
-			
-			//key press that checks if key entered was in DOWN direction
-			if (key == Square.DOWN){
-				if(current_row != (maze.rows() - 1) )
-				{
-					current_row += 1;
-					if(maze.getSquare(current_row, current_col).wall(Square.UP) == false){
-					super.moveTo(maze.getSquare(current_row, current_col));
-					}
-					else{
-					this.location();
-					}				
-				}
+			if (key == KeyEvent.VK_UP || key == KeyEvent.VK_KP_UP){
+				if(s.wall(Square.UP) == false)
+					moveTo(m.getSquare(s.row()-1, s.col()));
 			}
 				
 			
+			//key press that checks if key entered was in DOWN direction
+			else if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_KP_DOWN){		
+				if(s.wall(Square.DOWN) == false)
+					moveTo(m.getSquare(s.row() +1, s.col()));		
+			}
+			
+				
+			
 			//key press that checks if key entered was in LEFT direction
-			if (key == Square.LEFT){
-				if(current_col != 0)
-				{
-					current_col -= 1;
-					if(maze.getSquare(current_row, current_col).wall(Square.RIGHT) == false){
-						super.moveTo(maze.getSquare(current_row, current_col));
-					}
-					else{
-						this.location();
-					}
-				}	
+			else if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_KP_LEFT){
+				if(s.wall(Square.LEFT) == false)
+					moveTo(m.getSquare(s.row(), s.col()- 1));
 			}
 			
 			//key press that checks if key entered was in RIGHT direction
-			if (key == Square.RIGHT){
-				if(current_col != (maze.cols() - 1))
-				{	current_col += 1;
-					if(maze.getSquare(current_row, current_col).wall(Square.LEFT) == false){
-						super.moveTo(maze.getSquare(current_row, current_col));
-					}
-					else{
-						this.location();
-					}
-				}
+			else if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_KP_RIGHT){
+				if(s.wall(Square.RIGHT) == false)
+					moveTo(m.getSquare(s.row(), s.col()+1));
 			}
 		}
 		
@@ -136,10 +108,10 @@ public class Explorer extends Occupant{
 	  then call the enter() function to let the new Square know the explorer has entered.
 	  finally call the lookAround function so the explorer knows what's in its new surroundings
 	  */
-	public void move(Square s){
-		this.moveTo(s);
+	public void moveTo(Square s){
+		super.moveTo(s);
 		s.enter();
-		maze.lookAround(s);
+		m.lookAround(s);
 	}
 	
 }
